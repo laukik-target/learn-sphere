@@ -1,0 +1,33 @@
+<div class="dashboard-container" [ngClass]="{ 'sidebar-closed': !isSidebarOpen }">
+  <button class="sidebar-toggle" (click)="toggleSidebar()">☰</button>
+
+  <aside class="sidebar" *ngIf="isSidebarOpen">
+    <h2>Dashboard</h2>
+    <nav>
+      <a routerLink="/admin-dashboard" class="active">My Lectures</a>
+      <!-- Additional links as needed -->
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="header">
+      <h1>Lectures</h1>
+    </div>
+
+    <div class="course-grid">
+      <!-- Display "No lectures" card if there are no courses -->
+      <div *ngIf="!courses.length" class="course-card no-lectures">
+        <h3>No lectures uploaded yet</h3>
+        <p>Please check back later for new content!</p>
+      </div>
+
+      <!-- Course cards generated from Angular -->
+      <div *ngFor="let course of courses" class="course-card">
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+        <p><strong>Publish Date:</strong> {{ course.publish_date | date }}</p>
+        <a mat-raised-button color="primary" [href]="course.video_url" target="_blank">Watch Now</a>
+      </div>
+    </div>
+  </main>
+</div>

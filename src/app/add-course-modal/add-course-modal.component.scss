@@ -1,0 +1,17 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Increase the gap between fields if needed
+
+  mat-form-field {
+    width: 100%; // Ensures each input field takes up full dialog width
+  }
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px; // Add some space above the actions
+}
+

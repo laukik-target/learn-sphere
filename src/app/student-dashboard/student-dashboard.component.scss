@@ -1,0 +1,178 @@
+/* Overall Layout */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f5f5f5;
+
+  .sidebar {
+    background-color: #1E1E2F;
+    color: #fff;
+    width: 280px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    nav {
+      margin-top: 20px;
+
+      a {
+        display: block;
+        padding: 10px 15px;
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease;
+
+        &.active,
+        &:hover {
+          background-color: #4CAF50;
+        }
+      }
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+
+    .header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 15px;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+
+    .course-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+      justify-content: flex-start; /* Align cards to start from the left */
+    }
+
+    .course-card {
+      width: 100%;
+      max-width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin: 0 0 10px;
+        color: #333;
+      }
+
+      p {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 0 0 10px;
+      }
+
+      a[mat-icon-button] {
+        margin-top: 15px;
+        color: #fff;
+        background-color: #4CAF50;
+        font-size: 1.5rem; /* Ensure play icon is larger and centered */
+        padding: 10px;
+      }
+    }
+
+    /* No Lectures Card */
+    .no-lectures {
+      width: 100%;
+      max-width: 300px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      border: 2px dashed #ddd;
+      color: #777;
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #777;
+      }
+
+      p {
+        font-size: 0.875rem;
+        color: #aaa;
+      }
+    }
+  }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+
+    .sidebar {
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        a {
+          padding: 8px 12px;
+        }
+      }
+    }
+
+    .content {
+      padding: 10px;
+    }
+
+    .course-card,
+    .no-lectures {
+      width: 100%;
+    }
+  }
+}
+
+.sidebar-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #1E1E2F;
+  margin: 10px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.sidebar-closed .sidebar {
+  display: none;
+}

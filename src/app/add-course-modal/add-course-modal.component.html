@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Publish New Lecture</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Topic/Title</mat-label>
+      <input matInput [(ngModel)]="courseData.title" name="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Video URL</mat-label>
+      <input matInput [(ngModel)]="courseData.video_url" name="video_url" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Summary</mat-label>
+      <textarea matInput [(ngModel)]="courseData.description" name="description" required></textarea>
+    </mat-form-field>
+
+    <!-- Publish Date using MatDatepicker -->
+    <mat-form-field appearance="fill">
+      <mat-label>Publish Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="courseData.publish_date" name="publish_date" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Time Input using Angular Material's built-in input -->
+    <mat-form-field appearance="fill">
+      <mat-label>Publish Time</mat-label>
+      <input matInput [(ngModel)]="courseData.publish_time" name="publish_time" type="time" required />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit()">Schedule and Publish</button>
+</mat-dialog-actions>
