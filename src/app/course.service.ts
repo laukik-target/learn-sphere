@@ -8,8 +8,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class CourseService {
-  private coursesUrl = `${environment.apiUrl}/courses/view/`;
   private scheduledCoursesUrl = `${environment.apiUrl}/courses/view/`;
+  private allCoursesUrl = `${environment.apiUrl}/courses/all/`;
   private addCourseUrl = `${environment.apiUrl}/courses/add/`;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
@@ -19,6 +19,13 @@ export class CourseService {
     if (!headers) throw new Error('User is not authenticated'); // Optional: check if headers are present
 
     return this.http.get<any>(this.scheduledCoursesUrl, { headers });
+  }
+
+  getAllCourses(): Observable<any> {
+    const headers = this.authService.getAuthHeaders() || undefined;
+    if (!headers) throw new Error('User is not authenticated'); // Optional: check if headers are present
+
+    return this.http.get<any>(this.allCoursesUrl, { headers });
   }
 
   addCourse(courseData: any): Observable<any> {

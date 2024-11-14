@@ -33,7 +33,7 @@ export class AdminDashboardComponent implements OnInit {
 
   // Load courses from the backend
   loadCourses(): void {
-    this.courseService.getScheduledCourses().subscribe(
+    this.courseService.getAllCourses().subscribe(
       (response) => {
         this.courses = response; // Store response in courses array
       },
